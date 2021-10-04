@@ -1,9 +1,14 @@
 import React from "react";
 
-const ImageGalleryItem = () => {
+const ImageGalleryItem = ({ item }) => {
   return (
-    <li className="ImageGalleryItem">
-      <img src="" alt="" className="ImageGalleryItem-image" />
+    <li className="ImageGalleryItem" key={item.id}>
+      <img
+        src={item.webformatURL}
+        alt=""
+        className="ImageGalleryItem-image"
+        data-src={item.largeImageURL}
+      />
     </li>
   );
 };
