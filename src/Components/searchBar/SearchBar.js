@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 // import { ImSearch } from "react-icons/im";
 import { toast } from "react-toastify";
+import s from "./SearchBar.module.css";
 
 class SearchBar extends Component {
   state = {
     query: "",
   };
-  handleQueryChange = (event) => {
-    this.setState({ query: event.currentTarget.value.toLowerCase() });
+  handleQueryChange = (e) => {
+    this.setState({ query: e.currentTarget.value.toLowerCase() });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     if (this.state.query.trim() === "") {
       toast.error("Enter your request.");
@@ -24,7 +25,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <header className="Searchbar">
+      <header className={s.Searchbar}>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
           <button type="submit" className="SearchForm-button">
             <span className="SearchForm-button-label">Search</span>

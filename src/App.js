@@ -15,9 +15,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <SearchBar onSubmit={this.handleFormSubmit} />;
-        <ImageGallery query={this.state.query} />;
-        <ToastContainer autoClose={3000} />;
+        <SearchBar onSubmit={this.handleFormSubmit} />
+        <ImageGallery query={this.state.query} />
+        <ToastContainer autoClose={3000} />
       </>
     );
   }
