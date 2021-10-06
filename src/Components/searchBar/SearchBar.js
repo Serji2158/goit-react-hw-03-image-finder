@@ -15,27 +15,29 @@ class SearchBar extends Component {
     e.preventDefault();
 
     if (this.state.query.trim() === "") {
-      toast.error("Enter your request.");
-      return;
+      return toast.error("Put your query,please !", {
+        position: toast.POSITION.TOP_LEFT,
+      });
     }
 
     this.props.onSubmit(this.state.query);
     this.setState({ query: "" });
+    console.log("handleSubmit");
   };
 
   render() {
     return (
-      <header className={s.Searchbar}>
-        <form className="SearchForm" onSubmit={this.handleSubmit}>
-          <button type="submit" className="SearchForm-button">
-            <span className="SearchForm-button-label">Search</span>
+      <header className={s.searchBar}>
+        <form className={s.searchForm} onSubmit={this.handleSubmit}>
+          <button type="submit" className={s.searchFormButton}>
+            <span className={s.searchFormButtonLabel}>Search</span>
           </button>
 
           <input
-            className="SearchForm-input"
+            className={s.searchFormInput}
             type="text"
-            autocomplete="off"
-            autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
             onChange={this.handleQueryChange}
             value={this.state.query}

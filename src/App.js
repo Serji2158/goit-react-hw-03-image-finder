@@ -6,17 +6,31 @@ import SearchBar from "./Components/searchBar/SearchBar";
 class App extends Component {
   state = {
     query: "",
+    page: 1,
   };
 
   handleFormSubmit = (query) => {
-    this.setState({ query });
+    this.setState({ query, page: 1 });
+  };
+
+  increasePage = () => {
+    this.setState((prevState) => {
+      return {
+        page: prevState.page + 1,
+      };
+    });
   };
 
   render() {
+    const { query, page } = this.state;
     return (
       <>
         <SearchBar onSubmit={this.handleFormSubmit} />
-        <ImageGallery query={this.state.query} />
+        <ImageGallery
+          query={query}
+          page={page}
+          increasePage={this.increasePage}
+        />
         <ToastContainer autoClose={3000} />
       </>
     );

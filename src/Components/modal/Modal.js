@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
+import s from "./Modal.module.css";
 
 const modalRoot = document.querySelector("#modal-root");
 
@@ -24,20 +25,17 @@ class Modal extends Component {
     }
   };
 
-  onHandleClick = (e) => {
-    this.props.hideModal(e);
-  };
-
   handleBackdropClick = (e) => {
-    if (e.target !== e.currentTarget) return;
-    this.props.hideModal(e);
+    if (e.target === e.currentTarget) {
+      this.props.hideModal(e);
+    }
   };
 
   render() {
     return createPortal(
-      <div className="Overlay" onClick={this.handleBackdropClick}>
-        <div className="Modal">
-          <img src={this.props.children} alt="" />
+      <div className={s.overlay} onClick={this.handleBackdropClick}>
+        <div className={s.modal}>
+          <img src={this.props.largeImage} alt="" />
         </div>
       </div>,
       modalRoot

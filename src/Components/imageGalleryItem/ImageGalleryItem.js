@@ -19,22 +19,21 @@ class ImageGalleryItem extends Component {
     return (
       <>
         {this.props.gallery.map((picture) => (
-          <li
-            className={s.ImageGalleryItem}
-            key={picture.id}
-            onClick={this.toggleModal}
-          >
+          <li className={s.imageGalleryItem} key={picture.id}>
             <img
-              className={s.ImageGalleryItemImage}
+              className={s.imageGalleryItemImage}
               src={picture.webformatURL}
               alt=""
               id={picture.largeImageURL}
+              onClick={this.toggleModal}
             />
           </li>
         ))}
-        {/* console.log(picture) */}
         {this.state.showModal && (
-          <Modal onClose={this.toggleModal} children={this.state.largeImage} />
+          <Modal
+            hideModal={this.toggleModal}
+            largeImage={this.state.largeImage}
+          />
         )}
       </>
     );
