@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { ToastContainer } from "react-toastify";
 import ImageGallery from "./Components/imageGallery/ImageGallery";
 import SearchBar from "./Components/searchBar/SearchBar";
@@ -37,4 +38,8 @@ class App extends Component {
   }
 }
 
+App.propType = {
+  query: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
+};
 export default App;

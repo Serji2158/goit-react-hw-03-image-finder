@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import ImageGalleryItem from "../imageGalleryItem/ImageGalleryItem";
 import api from "./../../service/API";
 import s from "./ImageGallery.module.css";
@@ -14,7 +15,11 @@ class ImageGallery extends Component {
   componentDidUpdate(prevProps, prevState) {
     const prevQuery = prevProps.query;
     const nextQuery = this.props.query;
-    if (prevQuery !== nextQuery || this.props.page !== prevProps.page) {
+
+    const prevPage = prevProps.page;
+    const nextPage = this.props.page;
+
+    if (nextQuery !== prevQuery || nextPage !== prevPage) {
       this.setState({ loading: true });
       this.updateGallery();
     }
@@ -53,7 +58,7 @@ class ImageGallery extends Component {
       <>
         {error && <p>Whoops, something went wrong: {error.message}</p>}
         {loading && <p>Loading...</p>}
-        {!query && <div className={s.infoBox}>Enter you request</div>}
+        {!query && <div className={s.infoBox}>Enter you request, please.</div>}
         {gallery.length > 0 && (
           <ul className={s.ImageGallery}>
             <ImageGalleryItem gallery={this.state.gallery} />
@@ -72,5 +77,11 @@ class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propType = {
+  query: PropTypes.string.isRequired,
+  increasePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+};
 
 export default ImageGallery;

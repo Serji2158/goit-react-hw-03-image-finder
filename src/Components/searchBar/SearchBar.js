@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { ImSearch } from "react-icons/im";
+import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import s from "./SearchBar.module.css";
 
@@ -22,7 +22,6 @@ class SearchBar extends Component {
 
     this.props.onSubmit(this.state.query);
     this.setState({ query: "" });
-    console.log("handleSubmit");
   };
 
   render() {
@@ -48,4 +47,7 @@ class SearchBar extends Component {
   }
 }
 
+SearchBar.propType = {
+  onSubmit: PropTypes.func,
+};
 export default SearchBar;

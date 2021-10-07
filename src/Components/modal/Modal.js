@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import s from "./Modal.module.css";
 
@@ -42,5 +43,10 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propType = {
+  largeImage: PropTypes.string.isRequired,
+  hideModal: PropTypes.func.isRequired,
+};
 
 export default Modal;
